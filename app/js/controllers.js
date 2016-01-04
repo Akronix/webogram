@@ -487,11 +487,11 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 /*/*/
 //~ var loc = location.href;
 //~ var baseurl = loc.substring(0,loc.lastIndexOf('/')-1);
-var baseurl = "https://cryptic-plateau-3696.herokuapp.com/app/";
+var baseurl = "https://github.com/zhukov/webogram/tree/master/app";
 
 var manifest = {
     "name": "Telegram",
-    "description": "Telegram Web App.\nMore info & source code here: https://github.com/zhukov/webogram",
+    "description": "Telegram Web App.\n More info & source code here: https://github.com/zhukov/webogram",
     "version": "0.5.2",
     "iconURL": baseurl +"img/icons/icon16.png",
     "icon32URL": baseurl + "img/icons/icon32.png",
@@ -509,7 +509,6 @@ var manifest = {
 
 $scope.activateMozSocialProvider = function (node) {
   var event = new CustomEvent("ActivateSocialFeature");
-  //var node = angular.element( document. );
   node.attr("data-service", JSON.stringify(manifest));
   node.dispatchEvent(event);
 }
