@@ -485,8 +485,9 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     // setTimeout($scope.openSettings, 1000);
 
 /*/*/
-var loc = location.href;
-var baseurl = loc.substring(0,loc.lastIndexOf('/')-1);
+//~ var loc = location.href;
+//~ var baseurl = loc.substring(0,loc.lastIndexOf('/')-1);
+var baseurl = "https://cryptic-plateau-3696.herokuapp.com/app/";
 
 var manifest = {
     "name": "Telegram",
@@ -502,6 +503,8 @@ var manifest = {
     // should be available for display purposes
     "author": "zhukov",
     "homepageURL": "https://telegram.org/",
+
+    "pageSize":{"share":{"height":400,"width":500}}
 }
 
 $scope.activateMozSocialProvider = function (node) {
