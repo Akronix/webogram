@@ -484,6 +484,35 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
     // setTimeout($scope.openSettings, 1000);
 
+/*/*/
+var loc = location.href;
+var baseurl = loc.substring(0,loc.lastIndexOf('/')-1);
+
+var manifest = {
+    "name": "Telegram",
+    "description": "Telegram Web App.\nMore info & source code here: https://github.com/zhukov/webogram",
+    "version": "0.5.2",
+    "iconURL": baseurl +"img/icons/icon16.png",
+    "icon32URL": baseurl + "img/icons/icon32.png",
+    "icon64URL": baseurl + "img/icons/icon64.png",
+
+    //"shareURL": baseurl+"/share.html?url=%{url}",
+    "shareURL": 'https://telegram.me/share/url?text=%{title}&url=%{url}', //probar a añadir %{text}
+
+    // should be available for display purposes
+    "author": "zhukov",
+    "homepageURL": "https://telegram.org/",
+}
+
+$scope.activateMozSocialProvider = function (node) {
+  var event = new CustomEvent("ActivateSocialFeature");
+  //var node = angular.element( document. );
+  node.attr("data-service", JSON.stringify(manifest));
+  node.dispatchEvent(event);
+}
+
+/*/*/
+
     $scope.openFaq = function () {
       var url = 'https://telegram.org/faq';
       switch (Config.I18n.locale) {

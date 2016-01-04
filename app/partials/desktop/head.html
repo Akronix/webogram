@@ -1,3 +1,33 @@
+<script>
+
+var loc = location.href;
+var baseurl = loc.substring(0,loc.lastIndexOf('/')-1);
+
+var manifest = {
+    "name": "Telegram",
+    "description": "Telegram Web App.\nMore info & source code here: https://github.com/zhukov/webogram",
+    "version": "0.5.2",
+    "iconURL": baseurl +"img/icons/icon16.png",
+    "icon32URL": baseurl + "img/icons/icon32.png",
+    "icon64URL": baseurl + "img/icons/icon64.png",
+
+    //"shareURL": baseurl+"/share.html?url=%{url}",
+    "shareURL": 'https://telegram.me/share/url?text=%{title}&url=%{url}', //probar a añadir %{text}
+
+    // should be available for display purposes
+    "author": "zhukov",
+    "homepageURL": "https://telegram.org/",
+}
+
+function activateMozSocialProvider (node) {
+  var event = new CustomEvent("ActivateSocialFeature");
+  node.setAttribute("data-service", JSON.stringify(manifest));
+  node.dispatchEvent(event);
+}
+
+</script>
+
+
 <div class="tg_page_head tg_head_wrap noselect clearfix">
   <div class="tg_head_split">
 
@@ -12,6 +42,10 @@
         </a>
 
         <ul class="dropdown-menu">
+          <li><button onclick="activateMozSocialProvider(this)">
+            <span my-i18n="im_activate"></span>
+            </button>
+          </a></li>
           <li><a ng-click="openGroup()">
             <i class="icon icon-new-group"></i><span my-i18n="im_new_group"></span>
           </a></li>
