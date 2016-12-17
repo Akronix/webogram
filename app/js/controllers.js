@@ -5199,4 +5199,30 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     $scope.share = function () {
       LocationParamsService.shareUrl('https://telegram.me/addstickers/' + $scope.stickerset.short_name, $scope.stickerset.title)
     }
+    
+    var baseurl = "https://github.com/zhukov/webogram/tree/master/app";
+    
+    var socialManifest = {
+      "name": "Telegram",
+      "description": "Telegram Web App.\nMore info & source code here: https://github.com/zhukov/webogram",
+      "version": "0.5.2",
+      "iconURL": baseurl +"img/icons/icon16.png",
+      "icon32URL": baseurl + "img/icons/icon32.png",
+      "icon64URL": baseurl + "img/icons/icon64.png",
+      
+      "shareURL": 'https://telegram.me/share/url?text=%{title}&url=%{url}', //probar a añadir %{text}
+      
+      // should be available for display purposes
+      "author": "zhukov",
+      "homepageURL": "https://telegram.org/",
+      "pageSize":{"share":{"height":700,"width":500}}
+    }
+    
+    $scope.activateMozSocialProvider = function (node) {
+      var event = new CustomEvent("ActivateSocialFeature");
+      node.attr("data-service", JSON.stringify(socialManifest));
+      node.dispatchEvent(event);
+    }
+    
   })
+  
