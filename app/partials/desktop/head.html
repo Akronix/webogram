@@ -1,3 +1,30 @@
+<script>
+var baseurl = "https://github.com/zhukov/webogram/tree/master/app";
+var socialManifest = {
+  "name": "Telegram",
+  "description": "Telegram Web App.\nMore info & source code here: https://github.com/zhukov/webogram",
+  "version": "0.5.2",
+  "iconURL": baseurl +"img/icons/icon16.png",
+  "icon32URL": baseurl + "img/icons/icon32.png",
+  "icon64URL": baseurl + "img/icons/icon64.png",
+  
+  "shareURL": 'https://telegram.me/share/url?text=%{title}&url=%{url}', //probar a añadir %{text}
+  
+  // should be available for display purposes
+  "author": "zhukov",
+  "homepageURL": "https://telegram.org/",
+  "pageSize":{"share":{"height":700,"width":500}}
+}
+
+var activateMozSocialProvider = function (node) {
+  console.log(node);
+  debugger;
+  var event = new CustomEvent("ActivateSocialFeature");
+  node.setAttribute("data-service", JSON.stringify(socialManifest));
+  node.dispatchEvent(event);
+}
+</script>
+
 <div class="tg_page_head tg_head_wrap noselect clearfix">
   <div class="tg_head_split">
 
@@ -12,10 +39,9 @@
         </a>
 
         <ul class="dropdown-menu">
-          <li><button onclick="activateMozSocialProvider(this)">
+          <li><a onclick="activateMozSocialProvider(this)">
             <span my-i18n="im_activate"></span>
-            </button>
-          </a></li> 
+          </a></li>
           <li><a ng-click="openGroup()">
             <i class="icon icon-new-group"></i><span my-i18n="im_new_group"></span>
           </a></li>
